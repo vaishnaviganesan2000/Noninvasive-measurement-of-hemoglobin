@@ -1,0 +1,14 @@
+X = data[["Mean a*eye", "Mean a* palm", "Mean a* nail", "R/G of eye","R/G of palm", "R/G of nail","SD of a* eye","SD of a* palm","SD of a* nail"]]
+y = data["hb"]
+
+#define cross-validation method to evaluate model
+cv = RepeatedKFold(n_splits=10, n_repeats=3, random_state=1)
+
+#define model
+model = RidgeCV(alphas=arange(0, 1, 0.01), cv=cv, scoring='neg_mean_absolute_error')
+
+#fit model
+model.fit(X, y)
+
+#display lambda that produced the lowest test MSE
+print(model.alpha_)

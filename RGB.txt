@@ -1,0 +1,13 @@
+% Image wass obtained and filtered
+% To filter the image
+I = imread('image.tif');
+figure, imshow(I);
+K = medfilt2(J);
+% Image and was segemented and RGB value was extracted
+A = imread('peppers.png');
+% split the channels
+R = A(:,:,1); 
+G = A(:,:,2); 
+B = A(:,:,3);
+% From this mean of a*,R/G, and SD of a* was calculated
+% These values were used to build a ridge regression model
